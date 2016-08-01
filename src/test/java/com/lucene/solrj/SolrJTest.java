@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrQuery.ORDER;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.BinaryRequestWriter;
-import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.client.solrj.impl.BinaryResponseParser;
+import org.apache.solr.client.solrj.impl.HttpSolrClient.Builder;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.client.solrj.response.SolrResponseBase;
@@ -21,20 +22,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SolrJTest {
-	private HttpSolrServer client = null;
+	private SolrClient client = null;
 
 	private static final String SOLR_SERVER_URL = "http://192.168.137.130:8080/solr/collection1";
 
 	@Before
 	public void init() {
-		client = new HttpSolrServer(SOLR_SERVER_URL);
-		client.setSoTimeout(10000);
-		client.setConnectionTimeout(10000);
-		client.setDefaultMaxConnectionsPerHost(10);
-		client.setMaxTotalConnections(10);
-		client.setFollowRedirects(false);
-		client.setAllowCompression(true);
-		client.setRequestWriter(new BinaryRequestWriter());
+		client = new Builder(SOLR_SERVER_URL).allowCompression(true).withResponseParser(new BinaryResponseParser())
+				.build();
 	}
 
 	@Test
@@ -110,7 +105,7 @@ public class SolrJTest {
 			List<User> users = response.getBeans(User.class);
 			print(users);
 			print(response);
-		} catch (SolrServerException e) {
+		} catch (SolrServerException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -123,7 +118,7 @@ public class SolrJTest {
 			List<User> users = response.getBeans(User.class);
 			print(users);
 			print(response);
-		} catch (SolrServerException e) {
+		} catch (SolrServerException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -137,7 +132,7 @@ public class SolrJTest {
 			List<User> users = response.getBeans(User.class);
 			print(users);
 			print(response);
-		} catch (SolrServerException e) {
+		} catch (SolrServerException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -151,7 +146,7 @@ public class SolrJTest {
 			List<User> users = response.getBeans(User.class);
 			print(users);
 			print(response);
-		} catch (SolrServerException e) {
+		} catch (SolrServerException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -165,7 +160,7 @@ public class SolrJTest {
 			List<User> users = response.getBeans(User.class);
 			print(users);
 			print(response);
-		} catch (SolrServerException e) {
+		} catch (SolrServerException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -173,7 +168,11 @@ public class SolrJTest {
 	@After
 	public void after() {
 		if (client != null) {
-			client.shutdown();
+			try {
+				client.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

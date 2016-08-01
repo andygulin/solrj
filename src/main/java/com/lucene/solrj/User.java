@@ -18,8 +18,8 @@ public class User implements Serializable {
 	private int age;
 	@Field("address")
 	private String address;
-	@Field("createAt")
-	private Date createAt;
+	@Field("createdAt")
+	private Date createdAt;
 
 	public String getId() {
 		return id;
@@ -53,12 +53,12 @@ public class User implements Serializable {
 		this.address = address;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
+	public Date getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	@Override

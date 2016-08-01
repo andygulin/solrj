@@ -18,8 +18,7 @@ public class UserBuilder {
 	private static Jedis jedis;
 
 	static {
-		jedis = new Jedis("192.168.1.58", 6379);
-		jedis.auth("1234");
+		jedis = new Jedis("192.168.209.128", 6379);
 	}
 
 	public static List<User> getBuilderUsers(int count) {
@@ -30,7 +29,7 @@ public class UserBuilder {
 			user.setName(buildName());
 			user.setAge(buildAge());
 			user.setAddress(buildAddress());
-			user.setCreateAt(buildCreateAt());
+			user.setCreatedAt(buildCreateAt());
 			users.add(user);
 		}
 		jedis.close();
