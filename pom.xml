@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.lucene.solrj</groupId>
 	<artifactId>solrj</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -12,15 +11,15 @@
 	<properties>
 		<compile.level>1.8</compile.level>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<lucene.version>6.1.0</lucene.version>
-		<solrj.version>6.1.0</solrj.version>
+		<lucene.version>6.2.1</lucene.version>
+		<solrj.version>6.2.1</solrj.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<junit.version>4.12</junit.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<jedis.version>2.9.0</jedis.version>
 
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 	</properties>
 

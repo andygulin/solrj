@@ -1,1 +1,1 @@
-# solrj
+# Apache Solrj Sample
