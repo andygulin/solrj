@@ -13,13 +13,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<lucene.version>6.2.1</lucene.version>
 		<solrj.version>6.2.1</solrj.version>
-		<commons-lang3.version>3.4</commons-lang3.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
 		<junit.version>4.12</junit.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<commons-logging.version>1.2</commons-logging.version>
 		<jedis.version>2.9.0</jedis.version>
 
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 	</properties>
 
